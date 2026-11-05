@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: vellacars
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
