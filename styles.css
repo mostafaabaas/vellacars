@@ -1,109 +1,113 @@
-/* Framed layout system v2 — every block lives in a bordered panel.
-   1200px container · 8pt spacing scale · black #000 + neon lime #C8FF00.
-   Fonts: Sora/Inter (EN) · IBM Plex Sans Arabic (AR). */
+/* identity-v3-vellacars-2026-11-07
+   VELLACARS — Sporty automotive identity v3 (Nov 7, 2026)
+   Graphite dark #121417 · racing red #E10600 · diagonal /
+   speed details · cut-corner buttons · italic-feel display
+   via skewed accents · carbon panel texture.
+   Wordmark: VellaCars in white with red slash dot.
+   ============================================================ */
 :root{
-  --bg:#000; --panel:#0A0A0A; --panel2:#101010; --line:#1E1E1E;
-  --lime:#C8FF00; --lime-dim:rgba(200,255,0,.45); --lime-soft:rgba(200,255,0,.05);
-  --ink:#F4F4F4; --mut:#A9A9A9; --dim:#777; --r:16px;
+  --bg:#121417; --panel:#1A1D21; --panel2:#22262C; --line:#2E333A;
+  --red:#E10600; --red-hi:#FF2B1F; --red-dim:rgba(225,6,0,.5); --red-soft:rgba(225,6,0,.08);
+  --ink:#F2F3F5; --mut:#A8ADB5; --dim:#7A808A; --r:10px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:"Inter","IBM Plex Sans Arabic",system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);background-image:repeating-linear-gradient(115deg,rgba(255,255,255,.014) 0 2px,transparent 2px 14px);color:var(--ink);font-family:"Inter","IBM Plex Sans Arabic",system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 html[lang="ar"] body{font-family:"IBM Plex Sans Arabic","Inter",system-ui,sans-serif;line-height:1.95}
-h1,h2,h3,.disp{font-family:"Sora","Inter",sans-serif;line-height:1.15;font-weight:800}
+h1,h2,h3,.disp{font-family:"Sora","Inter",sans-serif;line-height:1.15;font-weight:800;letter-spacing:-.01em}
 html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] .disp{font-family:"IBM Plex Sans Arabic","Inter",sans-serif;line-height:1.45}
 a{color:inherit}
-::selection{background:var(--lime);color:#000}
-:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:4px}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 
-/* Header */
-header.site{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+/* Header — graphite, red under-rule */
+header.site{position:sticky;top:0;z-index:50;background:rgba(18,20,23,.92);backdrop-filter:blur(10px);border-bottom:2px solid var(--red)}
 .header-in{display:flex;align-items:center;gap:24px;min-height:72px}
-.wordmark{font-family:"Sora",sans-serif;font-weight:800;font-size:20px;text-decoration:none;letter-spacing:-.01em}
-html[lang="ar"] .wordmark{font-family:"IBM Plex Sans Arabic",sans-serif}
-.wordmark i{display:inline-block;width:9px;height:9px;background:var(--lime);border-radius:2px;margin-inline-start:6px}
+.wordmark{font-family:"Sora",sans-serif;font-weight:800;font-size:21px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+html[lang="ar"] .wordmark{font-family:"IBM Plex Sans Arabic",sans-serif;text-transform:none;letter-spacing:0}
+.wordmark i{display:inline-block;width:14px;height:9px;background:var(--red);border-radius:1px;margin-inline-start:6px;transform:skewX(-24deg)}
 nav.main{margin-inline-start:auto;display:flex;gap:24px;align-items:center}
 nav.main a{color:var(--mut);text-decoration:none;font-size:14.5px;font-weight:500}
-nav.main a:hover{color:var(--ink)}
+nav.main a:hover{color:#fff}
 .header-cta{margin-inline-start:8px}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .2s,border-color .2s,background .2s}
+/* Buttons — cut corner, red primary */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border-radius:6px;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .2s,border-color .2s,background .2s}
 .btn:active{transform:scale(.98)}
-.btn-primary{background:var(--lime);color:#000;box-shadow:0 10px 34px rgba(200,255,0,.16)}
-.btn-primary:hover{background:#DFFF4D}
-.btn-ghost{border-color:#2C2C2C;color:var(--ink);background:transparent}
-.btn-ghost:hover{border-color:var(--lime-dim)}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 30px rgba(225,6,0,.28)}
+.btn-primary:hover{background:var(--red-hi)}
+.btn-ghost{border-color:#3A4048;color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--red-dim)}
 .btn-sm{padding:9px 18px;font-size:14px}
 
-/* Sections — strict anatomy: eyebrow + H2 + short lead, hairline between */
+/* Sections — eyebrow with slanted speed bar */
 section{padding:64px 0}
 section+section{border-top:1px solid var(--line)}
 .sec-head{max-width:760px;margin-bottom:32px}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--lime);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
-html[lang="ar"] .eyebrow{letter-spacing:0;font-size:13px}
-.eyebrow::before{content:"";width:24px;height:1px;background:var(--lime)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--red-hi);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+html[lang="ar"] .eyebrow{letter-spacing:0;font-size:13px;color:var(--red-hi)}
+.eyebrow::before{content:"";width:28px;height:8px;background:var(--red);transform:skewX(-24deg)}
 .sec-head h2{font-size:clamp(28px,3.2vw,40px);margin-bottom:12px}
 .lead{color:var(--mut);max-width:68ch;font-size:17px}
 
-/* The frame — no content floats outside a panel */
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:32px}
+/* The frame — graphite panel, red top tick */
+.panel{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--red);border-radius:var(--r);padding:32px}
 
-/* Hero — two framed columns */
-.hero{padding:48px 0 64px}
+/* Hero — two framed columns, diagonal speed stripes */
+.hero{padding:48px 0 64px;background-image:repeating-linear-gradient(115deg,transparent 0 46px,rgba(225,6,0,.045) 46px 48px)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}
 .hero-copy{display:flex;flex-direction:column;justify-content:center}
-.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 14px;font-size:13px;color:var(--mut);width:fit-content;margin-bottom:24px}
-.chip i{width:8px;height:8px;border-radius:50%;background:var(--lime);flex:0 0 8px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel);border-radius:4px;padding:7px 14px;font-size:13px;color:var(--mut);width:fit-content;margin-bottom:24px}
+.chip i{width:12px;height:8px;background:var(--red);flex:0 0 12px;transform:skewX(-24deg)}
 h1{font-size:clamp(34px,4.4vw,56px);margin-bottom:16px}
-h1 em{color:var(--lime);font-style:normal}
+h1 em{color:var(--red-hi);font-style:normal}
 .hero-copy .lead{margin-bottom:32px}
 .cta-row{display:flex;gap:16px;flex-wrap:wrap}
 .hero-note{margin-top:16px;font-size:13.5px;color:var(--dim)}
 .hero-visual{display:flex;flex-direction:column;gap:16px}
 .pv-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .pv-title{font-weight:700;font-size:16px}
-.pv-tag{font-size:12px;color:var(--lime);border:1px solid var(--lime-dim);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.pv-tag{font-size:12px;color:#fff;background:var(--red);border:1px solid var(--red);border-radius:4px;padding:4px 10px;white-space:nowrap;font-weight:700}
 .tile-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.tile{border:1px solid var(--line);background:var(--panel2);border-radius:12px;padding:20px}
+.tile{border:1px solid var(--line);border-inline-start:3px solid var(--red);background:var(--panel2);border-radius:8px;padding:20px}
 .tile b{display:block;font-size:15px;margin-bottom:4px}
 .tile span{color:var(--mut);font-size:13.5px;line-height:1.55;display:block}
 .checks{list-style:none;display:flex;flex-direction:column;gap:14px}
 .checks li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.55}
-.tick{flex:0 0 22px;width:22px;height:22px;border:1px solid var(--lime-dim);border-radius:6px;color:var(--lime);display:inline-flex;align-items:center;justify-content:center;font-size:13px;margin-top:2px}
+.tick{flex:0 0 22px;width:22px;height:22px;border:1px solid var(--red-dim);border-radius:4px;color:var(--red-hi);display:inline-flex;align-items:center;justify-content:center;font-size:13px;margin-top:2px;background:var(--red-soft)}
 .msteps{display:flex;flex-direction:column}
-.mstep{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-top:1px dashed #262626;font-size:15px}
+.mstep{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-top:1px dashed #33383F;font-size:15px}
 .mstep:first-child{border-top:none;padding-top:0}
-.mstep b{color:var(--lime);font-family:"Sora",sans-serif;font-size:13px;font-weight:800;white-space:nowrap}
+.mstep b{color:var(--red-hi);font-family:"Sora",sans-serif;font-size:13px;font-weight:800;white-space:nowrap;font-style:italic}
 .mstep span{color:var(--mut)}
 .mstep span strong{color:var(--ink);font-weight:600}
 
 /* Audience strip */
 .strip{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .strip .lbl{font-weight:700;font-size:15.5px;margin-inline-end:8px}
-.tag{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--mut);background:var(--panel2)}
+.tag{border:1px solid var(--line);border-radius:4px;padding:8px 16px;font-size:14px;color:var(--mut);background:var(--panel2)}
 
-/* Cards */
+/* Cards — graphite, red slash glyph */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:12px;transition:transform .25s,border-color .25s}
-.card:hover{transform:translateY(-3px);border-color:var(--lime-dim)}
-.glyph{width:44px;height:44px;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--lime);background:var(--panel2)}
+.card:hover{transform:translateY(-3px) skewX(-.4deg);border-color:var(--red-dim)}
+.glyph{width:44px;height:44px;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--red-hi);background:var(--panel2)}
 .glyph svg{width:22px;height:22px}
 .card h3{font-size:19px}
 .card p{color:var(--mut);font-size:15.5px}
 .card ul{list-style:none;margin-top:4px;display:flex;flex-direction:column;gap:8px}
 .card li{font-size:14.5px;display:flex;gap:10px;align-items:baseline}
-.card li::before{content:"–";color:var(--lime);font-weight:700}
+.card li::before{content:"/";color:var(--red-hi);font-weight:800}
 
 /* Numbered rows inside a panel */
 .rows{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.arow{display:flex;gap:16px;padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}
-.num{font-family:"Sora",sans-serif;font-weight:800;color:var(--lime);font-size:14px;border:1px solid var(--lime-dim);border-radius:8px;width:40px;height:40px;flex:0 0 40px;display:flex;align-items:center;justify-content:center}
+.arow{display:flex;gap:16px;padding:20px;border:1px solid var(--line);border-radius:8px;background:var(--panel2)}
+.num{font-family:"Sora",sans-serif;font-weight:800;font-style:italic;color:#fff;font-size:14px;background:var(--red);border:1px solid var(--red);border-radius:6px;width:40px;height:40px;flex:0 0 40px;display:flex;align-items:center;justify-content:center;transform:skewX(-8deg)}
 .arow h3{font-size:16.5px;margin-bottom:4px}
 .arow p{color:var(--mut);font-size:14.5px;line-height:1.55}
-.note{margin-top:24px;border:1px dashed var(--lime-dim);border-radius:12px;padding:20px 24px;background:var(--lime-soft);font-size:15.5px}
-.note b{color:var(--lime)}
+.note{margin-top:24px;border:1px dashed var(--red-dim);border-radius:8px;padding:20px 24px;background:var(--red-soft);font-size:15.5px}
+.note b{color:var(--red-hi)}
 
 /* Checklist panel rows */
 .rule{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line);font-size:15.5px}
@@ -114,39 +118,39 @@ h1 em{color:var(--lime);font-style:normal}
 
 /* Steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.step{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px}
-.step .n{font-family:"Sora",sans-serif;font-size:28px;font-weight:800;color:var(--lime);margin-bottom:12px;line-height:1}
+.step{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--red);border-radius:var(--r);padding:28px}
+.step .n{font-family:"Sora",sans-serif;font-size:28px;font-weight:800;font-style:italic;color:var(--red-hi);margin-bottom:12px;line-height:1}
 .step h3{font-size:17px;margin-bottom:8px}
 .step p{color:var(--mut);font-size:15px}
 
 /* Guides */
 .gcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:12px;transition:transform .25s,border-color .25s}
-.gcard:hover{transform:translateY(-3px);border-color:var(--lime-dim)}
-.gchip{align-self:flex-start;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);border:1px solid var(--lime-dim);border-radius:999px;padding:5px 11px}
+.gcard:hover{transform:translateY(-3px);border-color:var(--red-dim)}
+.gchip{align-self:flex-start;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--red);border:1px solid var(--red);border-radius:4px;padding:5px 11px}
 html[lang="ar"] .gchip{letter-spacing:0;font-size:12.5px}
 .gcard h3{font-size:19px}
 .gcard p{color:var(--mut);font-size:15.5px}
-.gcard a.more{color:var(--lime);text-decoration:none;font-weight:600;font-size:14.5px;margin-top:auto}
+.gcard a.more{color:var(--red-hi);text-decoration:none;font-weight:700;font-size:14.5px;margin-top:auto}
 .guide{margin-top:24px}
 .guide .g-title{font-size:22px;margin:10px 0 8px}
 .guide .g-intro{color:var(--mut);max-width:68ch}
 .g-points{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
-.g-point{border:1px solid var(--line);border-radius:12px;background:var(--panel2);padding:20px}
+.g-point{border:1px solid var(--line);border-top:3px solid var(--red);border-radius:8px;background:var(--panel2);padding:20px}
 .g-point h3{font-size:16px;margin-bottom:8px}
 .g-point p{color:var(--mut);font-size:14.5px;line-height:1.6}
 
 /* FAQ */
 .faq{display:flex;flex-direction:column;gap:16px}
-.qa{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px 28px}
+.qa{background:var(--panel);border:1px solid var(--line);border-inline-start:4px solid var(--red);border-radius:var(--r);padding:24px 28px}
 .qa h3{font-size:16.5px;margin-bottom:8px}
 .qa p{color:var(--mut);font-size:15.5px;max-width:75ch}
 
 /* Disclaimer */
-.disclaimer{background:#070707;border:1px solid var(--line);border-radius:var(--r);padding:28px 32px;font-size:15px;color:var(--mut)}
+.disclaimer{background:#0D0F11;border:1px solid var(--line);border-radius:var(--r);padding:28px 32px;font-size:15px;color:var(--mut)}
 .disclaimer b{color:var(--ink)}
 
-/* CTA band — framed lime-glow panel */
-.cta-band{background:radial-gradient(640px 320px at 50% 0%,rgba(200,255,0,.13),transparent 70%),var(--panel);border:1px solid var(--lime-dim);border-radius:var(--r);padding:48px 32px;text-align:center}
+/* CTA band — red speed panel */
+.cta-band{background:linear-gradient(115deg,#1A1D21 55%,rgba(225,6,0,.16)),var(--panel);border:1px solid var(--red-dim);border-radius:var(--r);padding:48px 32px;text-align:center}
 .cta-band h2{font-size:clamp(26px,3vw,36px);margin-bottom:12px}
 .cta-band .lead{margin:0 auto 28px}
 .cta-band .cta-row{justify-content:center}
@@ -158,23 +162,23 @@ html[lang="ar"] .gchip{letter-spacing:0;font-size:12.5px}
 .err .lead{margin:0 auto 28px}
 .err .cta-row{justify-content:center}
 
-/* Footer */
-footer.site{border-top:1px solid var(--line);padding:48px 0 40px}
+/* Footer — graphite, red network line accent */
+footer.site{border-top:2px solid var(--red);padding:48px 0 40px;background:#0D0F11}
 .foot-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
 .foot-links{display:flex;gap:20px;flex-wrap:wrap}
 .foot-links a{color:var(--mut);text-decoration:none;font-size:14.5px}
-.foot-links a:hover{color:var(--lime)}
+.foot-links a:hover{color:var(--red-hi)}
 .footer-net{color:var(--mut);font-size:14.5px;max-width:62ch;margin-top:16px}
-.footer-net a{color:var(--lime);text-decoration:none}
+.footer-net a{color:var(--red-hi);text-decoration:none;font-weight:600}
 .footer-legal{color:var(--dim);font-size:13px;margin-top:24px;border-top:1px solid var(--line);padding-top:24px}
 
 /* Mobile sticky bar */
 .mb-bar{display:none}
 @media(max-width:760px){
-  .mb-bar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(5,5,5,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
-  .mb-bar a{flex:1;text-align:center;padding:13px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none}
-  .mb-book{background:var(--lime);color:#000}
-  .mb-wa{border:1px solid #2C2C2C;color:var(--ink)}
+  .mb-bar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(13,15,17,.96);backdrop-filter:blur(10px);border-top:2px solid var(--red)}
+  .mb-bar a{flex:1;text-align:center;padding:13px;border-radius:6px;font-weight:700;font-size:15px;text-decoration:none}
+  .mb-book{background:var(--red);color:#fff}
+  .mb-wa{border:1px solid #3A4048;color:var(--ink)}
   body{padding-bottom:78px}
 }
 
